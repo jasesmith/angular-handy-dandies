@@ -1,0 +1,26 @@
+{
+  "name": "angular-handy-dandies",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jasesmith/angular-handy-dandies",
+  "authors": [
+    "Jase <jase@star29.com>"
+  ],
+  "description": "Some angular handy utility things",
+  "main": "handy-dandies.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.x",
+    "jquery": "~2.x",
+    "underscore": "~1.x",
+    "font-awesome": "~4.x",
+    "jquery.scrollTo": "~2.x",
+    "moment": "~2.x"
+  }
+}
