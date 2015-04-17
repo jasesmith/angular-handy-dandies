@@ -6,20 +6,74 @@ function numberClamp(min, max) {
     return Math.min(Math.max(this, min), max);
 }
 
+// from http://ejohn.org/blog/title-capitalization-in-javascript/
+function titlecase(string){
+	var small = "(a|an|and|as|at|but|by|en|for|if|in|of|on|or|the|to|v[.]?|via|vs[.]?)";
+	var punct = "([!\"#$%&'()*+,./:;<=>?@[\\\\\\]^_`{|}~-]*)";
+	var parts = [], split = /[:.;?!] |(?: |^)["Ò]/g, index = 0;
+
+    var lower = function(word){
+		return word.toLowerCase();
+	};
+
+	var upper = function(word){
+	  return word.substr(0,1).toUpperCase() + word.substr(1);
+	}
+
+	while (true) {
+		var m = split.exec(string);
+
+		parts.push( string.substring(index, m ? m.index : string.length)
+			.replace(/\b([A-Za-z][a-z.'Õ]*)\b/g, function(all){
+				return /[A-Za-z]\.[A-Za-z]/.test(all) ? all : upper(all);
+			})
+			.replace(RegExp("\\b" + small + "\\b", "ig"), lower)
+			.replace(RegExp("^" + punct + small + "\\b", "ig"), function(all, punct, word){
+				return punct + upper(word);
+			})
+			.replace(RegExp("\\b" + small + punct + "$", "ig"), upper));
+
+		index = split.lastIndex;
+
+		if ( m ) parts.push( m[0] );
+		else break;
+	}
+
+	return parts.join("").replace(/ V(s?)\. /ig, " v$1. ")
+		.replace(/(['Õ])S\b/ig, "$1s")
+		.replace(/\b(AT&T|Q&A)\b/ig, function(all){
+			return all.toUpperCase();
+		});
+}
+
 function capitalize(string) {
     return (string !== null && string.length > 1) ? String(string).charAt(0).toUpperCase() + String(string).substring(1).toLowerCase() : string;
 }
 
 function uppercase(string){
-   return (string !== null && string.length) ? String(string).toUpperCase() : string;
+    return (string !== null && string.length) ? String(string).toUpperCase() : string;
 }
 
 function lowercase(string){
-   return (string !== null && string.length) ? String(string).toLowerCase() : string;
+    return (string !== null && string.length) ? String(string).toLowerCase() : string;
 }
 
-function lowerNoSpace(string){
-   return (string !== null && string.length) ? String(string).toLowerCase().replace(' ','') : string;
+function lowernospace(string){
+    return (string !== null && string.length) ? String(string).toLowerCase().replace(/[\W_]/g, '') : string;
+}
+
+function lowerdashed(string){
+    return (string !== null && string.length) ? String(string).toLowerCase().trim().replace(/[\W_]+/g, '-').replace(/^-|-$/g, '') : string;
+}
+
+function camelcase(string){
+    if(string !== null && string.length) {
+        var mutatedString = string.replace(/\w\S*/g, function(txt){
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        }).replace(/[\W_]+/g, '');
+        return mutatedString.charAt(0).toLowerCase() + mutatedString.substr(1);
+    }
+    return string;
 }
 
 function stripTags(string) {
@@ -115,6 +169,12 @@ _.mixin({
 });
 
 _.mixin({
+    titlecase: function(string) {
+        return titlecase(string);
+    }
+});
+
+_.mixin({
     capitalize: function(string) {
         return capitalize(string);
     }
@@ -133,8 +193,20 @@ _.mixin({
 });
 
 _.mixin({
-    lowerNoSpace: function(string) {
-        return lowerNoSpace(string);
+    lowernospace: function(string) {
+        return lowernospace(string);
+    }
+});
+
+_.mixin({
+    lowerdashed: function(string) {
+        return lowerdashed(string);
+    }
+});
+
+_.mixin({
+    camelcase: function(string) {
+        return camelcase(string);
     }
 });
 
@@ -253,6 +325,12 @@ angular.module('handy-dandies', [])
 })
 
 // FILTERS
+.filter('titlecase', function() {
+    return function(string) {
+        return titlecase(string);
+    };
+})
+
 .filter('capitalize', function() {
     return function(string) {
         return capitalize(string);
@@ -271,9 +349,21 @@ angular.module('handy-dandies', [])
     };
 })
 
-.filter('lowerNoSpace', function(){
+.filter('lowernospace', function(){
     return function(string) {
-        return lowerNoSpace(string);
+        return lowernospace(string);
+    };
+})
+
+.filter('lowerdashed', function(){
+    return function(string) {
+        return lowerdashed(string);
+    };
+})
+
+.filter('camelcase', function(){
+    return function(string) {
+        return camelcase(string);
     };
 })
 
