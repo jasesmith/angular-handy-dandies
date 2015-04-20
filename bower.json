@@ -1,11 +1,11 @@
 {
-  "name": "angular-handy-dandies",
+  "name": "Some Handy Dandies",
   "version": "0.0.1",
-  "homepage": "https://github.com/jasesmith/angular-handy-dandies",
+  "homepage": "http://jasesmith.github.io/some-handy-dandies/",
   "authors": [
     "Jase <jase@star29.com>"
   ],
-  "description": "Some angular handy utility things",
+  "description": "Some AngularJS and UnderscoreJS handy utility things.",
   "license": "MIT",
   "ignore": [
     "**/.*",
