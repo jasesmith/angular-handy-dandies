@@ -12,7 +12,7 @@
   <body>
     <section class="page-header">
       <h1 class="project-name">jamfu</h1>
-      <h2 class="project-tagline">Some handy AngularJS and UnderscoreJS utilities and other useful things..</h2>
+      <h2 class="project-tagline">Some handy AngularJS and UnderscoreJS utilities and other useful things.</h2>
       <a href="https://github.com/jasesmith/some-handy-dandies" class="btn">View on GitHub</a>
       <a href="https://github.com/jasesmith/some-handy-dandies/zipball/master" class="btn">Download .zip</a>
       <a href="https://github.com/jasesmith/some-handy-dandies/tarball/master" class="btn">Download .tar.gz</a>
@@ -21,7 +21,7 @@
     <section class="main-content">
         <h1 id="jamfu">JAMFU</h1>
         <p>Some handy AngularJS and UnderscoreJS utilities and other useful things I find myself using over and over again.</p>
-        <h4 id="dependencies-for-your-bower-">Dependencies (included via Bower)</h4>
+        <h4 id="dependencies-included-via-bower-">Dependencies (included via Bower)</h4>
         <ul>
         <li><a href="https://jquery.com/">jQuery</a></li>
         <li><a href="https://angularjs.org/">AngularJS</a></li>
@@ -30,20 +30,24 @@
         <li><a href="http://underscorejs.org/">UnderscoreJS</a></li>
         </ul>
         <hr>
-        <h2 id="angular-directives">Angular Directives</h2>
+        <h4 id="to-install-">To Install:</h4>
+        <pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>$&nbsp;bower&nbsp;install&nbsp;jamfu</span></span></span></div></pre><h4 id="after-the-bower-install-add-this-to-your-html-file-">After the Bower install, add this to your html file:</h4>
+        <pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>//&nbsp;in&nbsp;the&nbsp;head</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&lt;link&nbsp;rel=&quot;stylesheet&quot;&nbsp;href=&quot;bower_components/font-awesome/css/font-awesome.min.css&quot;&nbsp;media=&quot;screen&quot;&nbsp;charset=&quot;utf-8&quot;&nbsp;/&gt;</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>//</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&lt;script&nbsp;src=&quot;bower_components/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&lt;script&nbsp;src=&quot;bower_components/angular/angular.min.js&quot;&gt;&lt;/script&gt;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&lt;script&nbsp;src=&quot;bower_components/underscore/underscore-min.js&quot;&gt;&lt;/script&gt;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&lt;script&nbsp;src=&quot;bower_components/jquery.scrollTo/jquery.scrollTo.min.js&quot;&gt;&lt;/script&gt;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&lt;script&nbsp;src=&quot;bower_components/moment/min/moment.min.js&quot;&gt;&lt;/script&gt;</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>&lt;script&nbsp;src=&quot;bower_components/jamfu/jamfu.js&quot;&gt;&lt;/script&gt;</span></span></span></div></pre><h2 id="angular-directives">Angular Directives</h2>
         <h3 id="scroll-in">scroll-in</h3>
-        <p>HTML attributes:</p>
+        <p><code style="font-family: monaco;">&lt;div scroll-in=&quot;&quot; to=&quot;&quot; scroll-delay=&quot;&quot;&gt;&lt;/div&gt;</code></p>
         <ul>
         <li><code style="font-family: monaco;">scroll-in=&quot;.element&quot;</code> — The scrolling DOM element.</li>
         <li><code style="font-family: monaco;">to=&quot;.element-child&quot;</code> — The element to scroll to within the scroll-in container.</li>
         <li><code style="font-family: monaco;">scroll-delay=&quot;300&quot;</code> — <em>Optional</em>. Length of time (in milliseconds) to delay scrolling. Defaults to <code style="font-family: monaco;">0</code>.</li>
         </ul>
         <h3 id="scroll-to">scroll-to</h3>
-        <p>HTML attributes:</p>
+        <p><code style="font-family: monaco;">&lt;div scroll-to=&quot;&quot; scroll-delay=&quot;&quot;&gt;&lt;/div&gt;</code></p>
         <ul>
         <li><code style="font-family: monaco;">scroll-to=&quot;.element&quot;</code> — The element to scroll to within the given <code style="font-family: monaco;">$element</code> the attribute is on.</li>
         <li><code style="font-family: monaco;">scroll-delay=&quot;300&quot;</code> — <em>Optional</em>. Length of time (in milliseconds) to delay scrolling. Defaults to <code style="font-family: monaco;">0</code>.</li>
         </ul>
+        <h3 id="fa">fa</h3>
+        <p><code style="font-family: monaco;">&lt;fa name=&quot;&quot;&gt;&lt;/fa&gt;</code> — from <a href="https://github.com/picardy/angular-fontawesome">https://github.com/picardy/angular-fontawesome</a></p>
         <hr>
         <h2 id="angular-factories">Angular Factories</h2>
         <h3 id="storageservice">StorageService</h3>

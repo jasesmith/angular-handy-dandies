@@ -10,17 +10,40 @@ Some handy AngularJS and UnderscoreJS utilities and other useful things I find m
 
 ---
 
+#### To Install:
+
+```
+$ bower install jamfu
+```
+
+#### After the Bower install, add this to your html file:
+```
+// in the head
+<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" media="screen" charset="utf-8" />
+
+//
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/underscore/underscore-min.js"></script>
+<script src="bower_components/jquery.scrollTo/jquery.scrollTo.min.js"></script>
+<script src="bower_components/moment/min/moment.min.js"></script>
+<script src="bower_components/jamfu/jamfu.js"></script>
+```
+
 ## Angular Directives
 ### scroll-in
-HTML attributes:
+`<div scroll-in="" to="" scroll-delay=""></div>`
 - `scroll-in=".element"` — The scrolling DOM element.
 - `to=".element-child"` — The element to scroll to within the scroll-in container.
 - `scroll-delay="300"` — _Optional_. Length of time (in milliseconds) to delay scrolling. Defaults to `0`.
 
 ### scroll-to
-HTML attributes:
+`<div scroll-to="" scroll-delay=""></div>`
 - `scroll-to=".element"` — The element to scroll to within the given `$element` the attribute is on.
 - `scroll-delay="300"` — _Optional_. Length of time (in milliseconds) to delay scrolling. Defaults to `0`.
+
+### fa
+`<fa name=""></fa>` — from https://github.com/picardy/angular-fontawesome
 
 ---
 
