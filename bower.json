@@ -6,6 +6,10 @@
     "Jase <jase@star29.com>"
   ],
   "description": "Some AngularJS and UnderscoreJS handy utility things.",
+  "main": "handy-dandies.js",
+  "moduleType": [
+    "globals"
+  ],
   "license": "MIT",
   "ignore": [
     "**/.*",
