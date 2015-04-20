@@ -1,10 +1,12 @@
-# Some Handy Dandies
-Some handy AngularJS and UnderscoreJS utility things I find myself using over and over again.
+# JAMFU
+Some handy AngularJS and UnderscoreJS utilities and other useful things I find myself using over and over again.
 
-#### Dependencies (for your bower)
+#### Dependencies (included via Bower)
+- [jQuery](https://jquery.com/)
 - [AngularJS](https://angularjs.org/)
-- [UnderscoreJS](http://underscorejs.org/)
 - [MomentJS](http://momentjs.com/)
+- [Font Awesome](http://fontawesome.io/)
+- [UnderscoreJS](http://underscorejs.org/)
 
 ---
 
