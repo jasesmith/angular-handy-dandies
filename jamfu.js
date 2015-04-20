@@ -237,7 +237,7 @@ _.mixin({
 //
 // ANGULAR THINGS
 //
-angular.module('handy-dandies', [])
+angular.module('jamfu', [])
 
 // DIRECTIVES
 .directive('scrollIn', ['$timeout', function($timeout) {
