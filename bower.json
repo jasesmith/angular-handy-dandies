@@ -23,6 +23,7 @@
     "angular": "~1.x",
     "moment": "~2.x",
     "font-awesome": "~4.x",
-    "underscore": "~1.x"
+    "underscore": "~1.x",
+    "jquery.scrollTo": "~2.x"
   }
 }
