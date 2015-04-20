@@ -58,14 +58,6 @@ function lowercase(string){
     return (string !== null && string.length) ? String(string).toLowerCase() : string;
 }
 
-function lowernospace(string){
-    return (string !== null && string.length) ? String(string).toLowerCase().replace(/[\W_]/g, '') : string;
-}
-
-function lowerdashed(string){
-    return (string !== null && string.length) ? String(string).toLowerCase().trim().replace(/[\W_]+/g, '-').replace(/^-|-$/g, '') : string;
-}
-
 function camelcase(string){
     if(string !== null && string.length) {
         var mutatedString = string.replace(/\w\S*/g, function(txt){
@@ -74,6 +66,14 @@ function camelcase(string){
         return mutatedString.charAt(0).toLowerCase() + mutatedString.substr(1);
     }
     return string;
+}
+
+function lowernospace(string){
+    return (string !== null && string.length) ? String(string).toLowerCase().replace(/[\W_]/g, '') : string;
+}
+
+function lowerdashed(string){
+    return (string !== null && string.length) ? String(string).toLowerCase().trim().replace(/[\W_]+/g, '-').replace(/^-|-$/g, '') : string;
 }
 
 function stripTags(string) {
