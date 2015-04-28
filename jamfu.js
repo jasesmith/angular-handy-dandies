@@ -23,7 +23,7 @@ function titlecase(string){
 	while (true) {
 		var m = split.exec(string);
 
-		parts.push( string.substring(index, m ? m.index : string.length)
+		parts.push(string.substring(index, m ? m.index : string.length)
 			.replace(/\b([A-Za-z][a-z.'Õ]*)\b/g, function(all){
 				return /[A-Za-z]\.[A-Za-z]/.test(all) ? all : upper(all);
 			})
@@ -35,8 +35,11 @@ function titlecase(string){
 
 		index = split.lastIndex;
 
-		if ( m ) parts.push( m[0] );
-		else break;
+		if (m) {
+            parts.push( m[0] );
+        } else {
+            break;
+        }
 	}
 
 	return parts.join("").replace(/ V(s?)\. /ig, " v$1. ")
@@ -168,7 +171,8 @@ function move(array, oldIndex, newIndex) {
     }
     array.splice(newIndex, 0, array.splice(oldIndex, 1)[0]);
     return array;
-};
+}
+
 //
 // UNDERSCORE THINGS
 //
