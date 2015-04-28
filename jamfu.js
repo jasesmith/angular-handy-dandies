@@ -158,10 +158,26 @@ function naturalSort (a, b) {
     return 0;
 }
 
-
+// extend Array to move an item from old_index to new_index
+function move(array, oldIndex, newIndex) {
+    if (newIndex >= array.length) {
+        var k = newIndex - array.length;
+        while ((k--) + 1) {
+            array.push(undefined);
+        }
+    }
+    array.splice(newIndex, 0, array.splice(oldIndex, 1)[0]);
+    return array;
+};
 //
 // UNDERSCORE THINGS
 //
+_.mixin({
+    move: function(array, oldIndex, newIndex) {
+        return move(array, oldIndex, newIndex);
+    }
+});
+
 _.mixin({
     clamp: function(min, max) {
         return numberClamp(min, max);
