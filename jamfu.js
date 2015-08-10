@@ -610,7 +610,7 @@ angular.module('jamfu', [])
             return cell.id === id;
         });
         if (item) {
-            found.item = $angular.copy(item);
+            found.item = angular.copy(item);
             found.parentIds = [];
             if(action === 'remove') {
                 var index = collection.indexOf(id);
