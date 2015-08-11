@@ -180,83 +180,60 @@
     };
 
     // UNDERSCORE THINGS
-    _.mixin({
-        move: function(array, oldIndex, newIndex) {
-            return move(array, oldIndex, newIndex);
-        }
-    });
+    _.mixin({clamp: function(min, max) {
+        return numberClamp(min, max);
+    }});
 
-    _.mixin({
-        clamp: function(min, max) {
-            return numberClamp(min, max);
-        }
-    });
+    _.mixin({titlecase: function(string) {
+        return titlecase(string);
+    }});
 
-    _.mixin({
-        titlecase: function(string) {
-            return titlecase(string);
-        }
-    });
+    _.mixin({capitalize: function(string) {
+        return capitalize(string);
+    }});
 
-    _.mixin({
-        capitalize: function(string) {
-            return capitalize(string);
-        }
-    });
+    _.mixin({uppercase: function(string) {
+        return uppercase(string);
+    }});
 
-    _.mixin({
-        uppercase: function(string) {
-            return uppercase(string);
-        }
-    });
+    _.mixin({lowercase: function(string) {
+        return lowercase(string);
+    }});
 
-    _.mixin({
-        lowercase: function(string) {
-            return lowercase(string);
-        }
-    });
+    _.mixin({lowernospace: function(string) {
+        return lowernospace(string);
+    }});
 
-    _.mixin({
-        lowernospace: function(string) {
-            return lowernospace(string);
-        }
-    });
+    _.mixin({lowerdashed: function(string) {
+        return lowerdashed(string);
+    }});
 
-    _.mixin({
-        lowerdashed: function(string) {
-            return lowerdashed(string);
-        }
-    });
+    _.mixin({camelcase: function(string) {
+        return camelcase(string);
+    }});
 
-    _.mixin({
-        camelcase: function(string) {
-            return camelcase(string);
-        }
-    });
+    _.mixin({stripTags: function(string) {
+        return stripTags(string);
+    }});
 
-    _.mixin({
-        stripTags: function(string) {
-            return stripTags(string);
-        }
-    });
+    _.mixin({naturalSort: function(obj, value, context) {
+        var iterator = _.isFunction(value) ? value : function(obj){ return obj[value]; };
+        return _.pluck(_.map(obj, function(value, index, list) {
+            return {
+                value: value,
+                index: index,
+                criteria: iterator.call(context, value, index, list)
+            };
+        }).sort(function(left, right) {
+            var a = left.criteria;
+            var b = right.criteria;
+            return naturalSort(a, b);
+        }), 'value');
+    }});
 
-    _.mixin({
-        sortByNat: function(obj, value, context) {
-            var iterator = _.isFunction(value) ? value : function(obj){ return obj[value]; };
-            return _.pluck(_.map(obj, function(value, index, list) {
-                return {
-                    value: value,
-                    index: index,
-                    criteria: iterator.call(context, value, index, list)
-                };
-            }).sort(function(left, right) {
-                var a = left.criteria;
-                var b = right.criteria;
-                return naturalSort(a, b);
-            }), 'value');
-        }
-    });
-
+    _.mixin({move: function(array, oldIndex, newIndex) {
+        return move(array, oldIndex, newIndex);
+    }});
 
     // ANGULAR THINGS
     $angular.module('jamfu', [])
@@ -491,9 +468,18 @@
             return randomString(12, _keyCharList) + '-' + randomString(12, _keyCharList);
         };
 
+        var isBetween = function(n, a, b){
+            if(n > a && n < b) {
+                return true;
+            }
+            return false;
+        };
+
         var randomColor = function(sample){
-            sample = sample || $rootScope.colors;
-            return _.sample(sample);
+            if(_.isArray(sample)) {
+                return _.sample(sample);
+            }
+            return false;
         };
 
         var randomHexColor = function() {
@@ -603,12 +589,15 @@
             if (item) {
                 found.item = $angular.copy(item);
                 found.parentIds = [];
+
+                // doing this here because this is in the right nest right now
                 if(action === 'remove') {
                     var index = collection.indexOf(id);
                     if(index > -1) {
                         collection.splice(index, 1);
                     }
                 }
+
             } else {
                 // if no match is found, search one level deeper for each item
                 for (var i = 0; i < collection.length; i++) {
@@ -626,8 +615,9 @@
         };
 
         return {
-            createUuid: createUuid,
             randomString: randomString,
+            createUuid: createUuid,
+            isBetween: isBetween,
             randomColor: randomColor,
             randomHexColor: randomHexColor,
             colorBrightness: colorBrightness,
