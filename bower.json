@@ -24,6 +24,14 @@
     "moment": "~2.x",
     "font-awesome": "~4.x",
     "underscore": "~1.x",
-    "jquery.scrollTo": "~2.x"
-  }
-}
+    "jquery.scrollTo": "~2.x",
+    "angular-sanitize": "~1.x.x",
+    "angular-touch": "~1.x.x",
+    "angular-animate": "~1.x.x",
+    "angular-ui-router": "~0.2.x",
+    "angular-ui-sortable": "~0.13.x",
+    "ryanmullins-angular-hammer": "~2.1.x"
+  },
+  "resolutions": {
+    "angular": "1.4.0"
+  }}
