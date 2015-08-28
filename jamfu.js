@@ -672,6 +672,40 @@
             return outer;
         };
 
+        var deviceReady = function(fn){
+            if (typeof window.cordova === 'object') {
+                document.addEventListener('deviceready', function () {
+                    fn();
+                }, false);
+            } else {
+                fn();
+            }
+        };
+
+        var deviceResume = function(fn){
+            if (typeof window.cordova === 'object') {
+                deviceReady(function() {
+                    document.addEventListener('resume', function() {
+                        fn();
+                    }, false);
+                });
+            } else {
+                fn();
+            }
+        };
+
+        var devicePause = function(fn){
+            if (typeof window.cordova === 'object') {
+                deviceReady(function() {
+                    document.addEventListener('pause', function() {
+                        fn();
+                    }, false);
+                });
+            } else {
+                fn();
+            }
+        };
+
         return {
             randomString: randomString,
             createUuid: createUuid,
@@ -683,7 +717,10 @@
             getNumbers: getNumbers,
             getMetrics: getMetrics,
             findDeep: findDeep,
-            swipe: swipe
+            swipe: swipe,
+            deviceReady: deviceReady,
+            deviceResume: deviceResume,
+            devicePause: devicePause
         };
 
     }])
