@@ -6,8 +6,9 @@
     "_": false,
     "$": false,
     "window": false,
+    "document": false,
     "app": false,
-    "localStorage"
+    "localStorage": false
   },
   "camelcase": true,
   "curly": true,

@@ -216,6 +216,10 @@
         return stripTags(string);
     }});
 
+    _.mixin({isDefined: function(ref) {
+        return !_.isUndefined(ref);
+    }});
+
     _.mixin({naturalSort: function(obj, value, context) {
         var iterator = _.isFunction(value) ? value : function(obj){ return obj[value]; };
         return _.pluck(_.map(obj, function(value, index, list) {
@@ -499,11 +503,11 @@
                 r = color[0];
                 g = color[1];
                 b = color[2];
-            } else if ('#' == color[0] && 7 == color.length) {
+            } else if ('#' === color[0] && 7 === color.length) {
                 r = parseInt(color.slice(1, 3), 16);
                 g = parseInt(color.slice(3, 5), 16);
                 b = parseInt(color.slice(5, 7), 16);
-            } else if ('#' == color[0] && 4 == color.length) {
+            } else if ('#' === color[0] && 4 === color.length) {
                 r = parseInt(color[1] + color[1], 16);
                 g = parseInt(color[2] + color[2], 16);
                 b = parseInt(color[3] + color[3], 16);
@@ -583,7 +587,7 @@
             found = found || {item: undefined, parentIds: []};
 
             var item;
-            item = _.find(collection, function(cell, index) {
+            item = _.find(collection, function(cell) {
                 return cell.id === id;
             });
             if (item) {

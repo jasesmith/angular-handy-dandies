@@ -31,7 +31,7 @@
     "angular-ui-router": "~0.2.x",
     "angular-ui-sortable": "~0.13.x",
     "hammerjs": "~2.0.x",
-    "ryanmullins-angular-hammer": "~2.1.x"
+    "ryanmullins-angular-hammer": "~2.x.x"
   },
   "resolutions": {
     "angular": "1.4.0"
